@@ -52,7 +52,7 @@ def home(request):
 #    return render(request,"app/login.html")
 
 
-
+@staff_member_required
 def entry(request):
     if request.method == 'POST':
 
@@ -69,10 +69,11 @@ def entry(request):
 
     return render(request, 'app/entry.html', {'form': form, 'construct_number': construct_number})
 
+@staff_member_required
 def entry_success(request):
     return render(request, 'app/entry_success.html')
 
-
+@staff_member_required
 def search(request):
     if request.method == 'POST':
         construct_number = request.POST['construct_number']
@@ -89,9 +90,11 @@ def search(request):
     else:
         return render(request, 'app/search.html')
 
+@staff_member_required
 def apply_success(request):
     return render(request, 'app/apply_success.html')
 
+@staff_member_required
 def apply(request, construct_number):
     #construct_item = ConstructItem.objects.get(construct_number=construct_number)
 
@@ -118,7 +121,7 @@ def apply(request, construct_number):
 
 
 
-
+@staff_member_required
 def edit(request, construct_number):
     construct_item = ConstructItem.objects.get(construct_number=construct_number)
     if request.method == 'POST':
@@ -191,7 +194,7 @@ def export(request):
             return render(request, 'app/export.html',{'no_filtered_files': True})
 
     return render(request, 'app/export.html')
-
+@staff_member_required
 def statistics(request):
 
     constructItems = ConstructItem.objects.all().order_by('-application_time')
