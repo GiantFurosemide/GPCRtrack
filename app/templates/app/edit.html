@@ -1,0 +1,23 @@
+{% extends 'app/home.html' %}
+
+{% block content %}
+    <h2>Edit Construct Item</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p><label for="construct_number">Construct Number:</label></p>
+        <p><input type="text" id="construct_number" name="construct_number" value="{{ construct_item.construct_number }}" readonly><br></p>
+        <p><label for="receptor">Receptor:</label></p>
+        <p><input type="text" id="receptor" name="receptor" value="{{ construct_item.receptor }}" required><br></p>
+        <p><label for="DNA_sequence">DNA Sequence:</label></p>
+        <p><textarea id="DNA_sequence" name="DNA_sequence" required>{{ construct_item.DNA_sequence }}</textarea><br></p>
+        <p><label for="description">Description:</label></p>
+        <p><textarea id="description" name="description" required>{{ construct_item.description }}</textarea><br></p>
+        <p><label for="comment">Comment:</label></p>
+        <p><textarea id="comment" name="comment">{{ construct_item.comment }}</textarea><br></p>
+        <p><label for="user">User:</label></p>
+        <p><textarea id="user" name="user">{{ construct_item.user }}</textarea><br></p>
+        </p><input type="submit" value="Save Changes"></p>
+    </form>
+    <a href="{% url 'app:home' %}">Back to home</a>
+{% endblock %}
+

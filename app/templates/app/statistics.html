@@ -1,0 +1,20 @@
+{% extends 'app/home.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Global Statistics</h2>
+    <p>Number of constructs: {{ len_constructItems }}</p>
+    <p>Number of expression requests: {{ len_applicationItems }}</p>
+    <p>Number of receptors: {{ len_receptors }}</p>
+    <p>Number of users: {{ user_count }}</p>
+
+    {% if export_all_construct %}
+        <p> <a href="{% static  all_construct_csv_file_url  %}" download="{{ all_construct_basename }}"><button>Download All Construct CSV file</button></a></p>
+    {% endif %}
+    {% if export_all_application %}
+        <p> <a href="{% static  all_application_csv_file_url  %}" download="{{ all_application_basename }}"><button>Download All Application CSV file</button></a></p>
+    {% endif %}
+
+    <p><a href="{% url 'app:home' %}">Back to home</a></p>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+
+
+{% block content %}
+    <h2>Welcome to GPCRtrack!</h2>
+    <p>Choose an option:</p>
+    <ul>
+        <li><a href="{% url 'app:entry' %}">Create A New Construct</a></li>
+        <li><a href="{% url 'app:search' %}">Search Construct for Expression Request</a></li>
+        <li><a href="{% url 'app:export' %}">Export Expression Requests(for staff)</a></li>
+        <li><a href="{% url 'app:statistics' %}">Statistics</a></li>
+
+    </ul>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'app/home.html' %}
+
+{% block content %}
+    <h2>Search</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="construct_number">Construct Number:</label>
+        <input type="text" id="construct_number" name="construct_number" required><br>
+        <p><input type="submit" value="Search"></p>
+    <a href="{% url 'app:home' %}">Back to home</a>
+    </form>
+    {% if construct_item %}
+        <h3>Construct Information:</h3>
+        <p><strong>Construct Number:</strong> {{ construct_item.construct_number }}</p>
+        <p><strong>Receptor:</strong> {{ construct_item.receptor }}</p>
+        <p><strong>DNA Sequence:</strong> {{ construct_item.DNA_sequence }}</p>
+        <p><strong>Description:</strong> {{ construct_item.description }}</p>
+        <p><strong>Comment:</strong> {{ construct_item.comment }}</p>
+        <p><strong>Created By:</strong> {{ construct_item.user }}</p>
+        <a href="{% url 'app:home' %}">Back to home</a>
+        <h3>More Operations:</h3>
+        <ul>
+            <li><a href="{% url 'app:apply' construct_item.construct_number %}">Expression Request</a></li>
+            <li><a href="{% url 'app:edit' construct_item.construct_number %}">Edit Construct Info</a></li>
+            <li><a href="{% url 'app:delete' construct_item.construct_number %}">Delete Construct Info</a></li>
+        </ul>
+        <h3>Application History:</h3>
+        {% if application_items %}
+            <ol>
+                {% for application_item in application_items %}
+                    <li>
+                        <p><strong>Construct Number:</strong> {{ application_item.construct_number }}</p>
+                        <p><strong>P:</strong> {{ application_item.P }}</p>
+                        <p><strong>Biomass:</strong> {{ application_item.biomass }}</p>
+                        <p><strong>Expression System:</strong> {{ application_item.expression_system }}</p>
+                        <p><strong>Application Time:</strong> {{ application_item.application_time }}</p>
+                        <p><strong>Application user:</strong> {{ application_item.application_user }}</p>
+                        <p><strong>Comment:</strong> {{ application_item.comment }}</p>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>No application records found.</p>
+        {% endif %}
+
+    {% else %}
+        <p>No construct item found. Please try again.</p>
+    {% endif %}
+    <a href="{% url 'app:home' %}">Back to home</a>
+{% endblock %}

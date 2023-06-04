@@ -1,0 +1,12 @@
+{% extends 'app/home.html' %}
+
+{% block content %}
+    <h2>Delete Construct Item</h2>
+    <p>Are you sure you want to delete the construct item with the construct number: <strong>{{ construct_item.construct_number }}</strong>?</p>
+    <p>All information of <strong>{{ construct_item.construct_number }}</strong> and related application records WILL BE DELETED IRRETRIEVABLY!!!</p>
+    <form method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Delete"></p>
+    </form>
+    <p><a href="{% url 'app:home' %}">Back to home</a></p>
+{% endblock %}

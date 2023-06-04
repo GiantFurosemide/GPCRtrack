@@ -1,0 +1,9 @@
+{% extends 'app/home.html' %}
+{% block content %}
+    <h2>Created Expression Request Successfully!</h2>
+    <ul>
+    <li><a href="{% url 'app:home' %}">Back to home</a></li>
+    <li><a href="{% url 'app:entry' %}">Create Construct</a></li>
+    <li><a href="{% url 'app:search' %}">Search and Create Another Request </a></li>
+    </ul>
+{% endblock %}

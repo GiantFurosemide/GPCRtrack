@@ -1,0 +1,42 @@
+{% extends 'app/home.html' %}
+
+{% block content %}
+    <h2>Create A Expression Request</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p><label for="construct_number">Construct Number:</label></p>
+        <p><input type="text" id="construct_number" name="construct_number" value="{{ construct_number }}" readonly><br></p>
+        <p><label for="P">P(enter numbers only, 0 or 1):</label></p>
+        <p><input type="number" id="P" name="P" required><br></p>
+        <p><label for="biomass ">Biomass:</label></p>
+        <p><input type="number" id="biomass" name="biomass" required><br></p>
+        <p><label for="expression_system">Expression System:</label></p>
+        <p><input type="text" id="expression_system" name="expression_system" required><br></p>
+        <p><label for="application_user">Created By:</label></p>
+        <p><input type="text" id="application_user" name="application_user"><br></p>
+        <p><label for="comment">Comment:</label></p>
+        <p><textarea id="comment" name="comment"></textarea><br></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+
+    <a href="{% url 'app:home' %}">Back to home</a>
+    <h2>Application History</h2>
+    {% if application_items %}
+        <ol>
+            {% for application_item in application_items %}
+                <li>
+                    <p><strong>construct_number:</strong> {{ application_item.construct_number }}</p>
+                    <p><strong>P:</strong> {{ application_item.P }}</p>
+                    <p><strong>Biomass:</strong> {{ application_item.biomass }}</p>
+                    <p><strong>Expression System:</strong> {{ application_item.expression_system }}</p>
+                    <p><strong>Application Time:</strong> {{ application_item.application_time }}</p>
+                    <p><strong>Application user:</strong> {{ application_item.application_user }}</p>
+                    <p><strong>Comment:</strong> {{ application_item.comment }}</p>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>No application records found.</p>
+    {% endif %}
+    <a href="{% url 'app:home' %}">Back to home</a>
+{% endblock %}

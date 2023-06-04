@@ -1,0 +1,27 @@
+{% extends 'app/home.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Export Application Records</h2>
+    <p>Search applications.</p>
+    <p>Examples:</p>
+    <p>Search data between 2023-06-04 00:00 and 2023-06-04 23:59</p>
+    <p>input:Start Date=2023-06-04, End Date=2023-06-04</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <p><label for="start_date">Start Date:</label></p>
+        <p><input type="date" id="start_date" name="start_date" required><br></p>
+        <p><label for="end_date">End Date:</label></p>
+        <p><input type="date" id="end_date" name="end_date" required><br></p>
+        <p><input type="submit" value="Search And Export"></p>
+    </form>
+    {% if exported %}
+        <p>Exported successfully! <a href="{% static  csv_file_url  %}" download="{{ basename }}"><button>Download CSV file</button></a></p>
+    {% endif %}
+    {% if no_filtered_files %}
+        <p>No applications found within the assigned date.</p>
+        <p>Please try again.</p>
+    {% endif %}
+    <p><a href="{% url 'app:home' %}">Back to home</a></p>
+{% endblock %}
