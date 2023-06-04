@@ -5,7 +5,7 @@ A light-weight server for tracking GPCR sequences and expression requests.
 ## Installation
 ```
 cd /path/to/GPCRtrack
-conda create -n GPCRtrack -f environment.yml
+conda env create -n GPCRtrack -f environment.yml
 ```
 
 ## Usage
