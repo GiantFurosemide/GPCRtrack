@@ -1,0 +1,5 @@
+.gitignore
+db.sqlite3
+data
+*.ipynb
+.idea
