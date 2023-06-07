@@ -3,3 +3,4 @@ db.sqlite3
 data
 *.ipynb
 .idea
+app/static/app/data_output
