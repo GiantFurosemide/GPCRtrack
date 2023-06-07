@@ -11,6 +11,7 @@ from django.conf import settings
 
 import datetime
 from django.utils import timezone
+from django.utils.timezone import utc
 
 
 # utilities
@@ -107,7 +108,7 @@ def apply(request, construct_number):
         if form.is_valid():
             print('cccc')
             application_item = form.save(commit=False)
-            #application_item.application_time = timezone.now()
+            application_item.application_time = datetime.datetime.utcnow().replace(tzinfo=utc)
             application_item.save()
             return redirect(reverse('app:apply_success'))
 
