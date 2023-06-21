@@ -24,5 +24,6 @@ use tmux to keep the server running in the background.
 ```python manage.py flush ```
 ### import csv to databases
 ```python csv_import.py ```
+### change 'last_construct_number' in app/meta.json
 
 
