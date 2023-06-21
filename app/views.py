@@ -8,7 +8,6 @@ import json
 from .env_variables import export_csv_path,export_all_construct_csv_path,export_all_application_csv_path
 from django.db.models import Count
 from django.conf import settings
-
 import datetime
 from django.utils import timezone
 from django.utils.timezone import utc
@@ -100,19 +99,19 @@ def apply(request, construct_number):
     #construct_item = ConstructItem.objects.get(construct_number=construct_number)
 
     if request.method == 'POST':
-        print('bbbbb')
+
         form = ApplicationItemForm(request.POST)
 
         #print(form)
 
         if form.is_valid():
-            print('cccc')
+
             application_item = form.save(commit=False)
             application_item.application_time = datetime.datetime.utcnow().replace(tzinfo=utc)
             application_item.save()
             return redirect(reverse('app:apply_success'))
 
-    try:
+    try:  # return an empty set if no application item is found
         application_items = ApplicationItem.objects.filter(construct_number=construct_number).order_by('-application_time')
     except ApplicationItem.DoesNotExist:
         return render(request, 'app/application.html', {'construct_number': construct_number})
