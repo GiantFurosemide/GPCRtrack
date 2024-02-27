@@ -5,7 +5,7 @@ A light-weight server for tracking GPCR sequences and expression requests.
 ## Installation
 
 ```
-git clone 
+git clone https://github.com/GiantFurosemide/GPCRtrack.git
 cd GPCRtrack
 conda env create -n GPCRtrack -f environment.yml
 ```
