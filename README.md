@@ -15,9 +15,11 @@ conda env create -n GPCRtrack -f environment.yml
 ```
 cd /path/to/GPCRtrack
 conda activate GPCRtrack
+# update allowed server in GPCRTRACK/GPCRtrack/setting.py
 python manage.py runserver 0.0.0.0:8000
 ```
 use tmux to keep the server running in the background.
+
 
 ## management
 ### Create a superuser
