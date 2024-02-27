@@ -3,8 +3,10 @@ GPCRtrack
 A light-weight server for tracking GPCR sequences and expression requests.
 
 ## Installation
+
 ```
-cd /path/to/GPCRtrack
+git clone 
+cd GPCRtrack
 conda env create -n GPCRtrack -f environment.yml
 ```
 
